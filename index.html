@@ -6,21 +6,45 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Liam's Famous Words</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            background-color:black; color:white;
+        }
+        body {
+            /* box-sizing: border-box; */
+            background-color:black; color:white;
+        }
+        .row {
+            border: 1px solid;
+            padding: 1%;
+        }
+        .col {
+            /* margin: auto; */
+            text-align: center;
+        }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <div class="row">Liam's Last Words</div>
-        <div class="row">
-            <div class="row">
-                <div class="col-sm">Game Directions</div>
-            </div>
-            <div class="row">
-                <div class="col-sm">Letters to be guessed</div>
-            </div>
-            <div class="row">
-                <div class="col-sm">Score Board</div>
+<body class="">
+    <div class="header" style="height:50px;"></div>
+        <div class="container border border-white mb-4" style="padding: 5%;">
+            <div class="row m-5">
+                <!-- <div class="col-2"></div> -->
+                <div class="col">Liam's Famous Words</div>
+                <!-- <div class="col-2"></div> -->
             </div>
         </div>
-    </div>
+        <div class="container border border-white" style="padding: 5%;">
+            <div class="row m-5">
+                <div class="col">Game Directions</div>
+            </div>
+            <div class="row m-5">
+                <div class="col">Letters to be guessed</div>
+            </div>
+            <div class="row m-5">
+                <div class="col">Score Board</div>
+            </div>
+        </div>
 </body>
 </html>
