@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        body {
+            opacity: 1;
+            transition: 0.7s opacity;
+            /* background-color: blue;
+            color: white; */
+        }
+
+        body.fade {
+            opacity: 0;
+            transition: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hangman</h1>
+    <div id="directions">Guess the letter to fill the word</div>
+    <br>
+    <div id="c"></div>
+    <div id="a"></div>
+    <div id="t"></div>
+
+    <script>
+    var wordCat = ["c", "a", "t"];
+
+    // user will push letter key
+    document.onkeyup = function(event) {
+
+    //computer will compare event with array
+    var userGuess = event.key;
+
+        // if user guess "c", "a", or "t", the text will be in corresponding div id
+        if (userGuess === wordCat[0]) {
+            var cText = document.getElementById("c");
+            cText.textContent = userGuess;
+        }
+        if (userGuess === wordCat[1]) {
+            var aText = document.getElementById("a");
+            aText.textContent = userGuess;
+        }
+        if (userGuess === wordCat[2]) {
+            var tText = document.getElementById("t");
+            tText.textContent = userGuess;
+        }
+
+        // if user guess
+
+    }
+
+    document.addEventListener("DOMContentLoaded", function(e) {
+        document.body.className = "";
+    });
+
+
+    </script>
+</body>
+</html>

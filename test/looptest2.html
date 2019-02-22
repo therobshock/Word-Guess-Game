@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var  word = "pumpersnintch";
+        
+        document.onkeyup = function(event) {
+            for (let i = 0; i < word.length; i++) {
+                var userKey = event.key; 
+            //console.log(word[i]);
+            
+            if (userKey === word[i]) {
+                console.log(userKey);
+            }
+            else {
+                console.log("wrong");
+            }
+        }
+    }
+
+        </script>
+    
+</body>
+</html>
