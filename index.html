@@ -18,7 +18,7 @@
         }
         .row {
             border: 1px solid;
-            padding: 1%;
+            /* padding: 1%; */
         }
         .col {
             /* margin: auto; */
@@ -27,89 +27,37 @@
     </style>
 </head>
 <body class="">
-    <div class="header" style="height:50px;"></div>
-        <div class="container border border-white mb-4" style="padding: 5%;">
-            <div class="row m-5">
-                <!-- <div class="col-2"></div> -->
-                <div id="title" class="col"></div>
-                <!-- <div class="col-2"></div> -->
-            </div>
-        </div>
-        <div class="container border border-white" style="padding: 5%;">
-            <div class="row m-5">
-                <div id="instructions" class="col"></div>
-            </div>
-            <div class="row m-5">
-                <div id="word" class="col">Letters to be guessed</div>
-            </div>
-            <div class="row m-5">
-                <div id="score" class="col">Score Board</div>
-            </div>
-        </div>
-
-<script>
-
-var gameTitle = document.getElementById("title");
-var gameInstructions = document.getElementById("instructions");
-var gameWord = document.getElementById("word");
-var gameBoard = document.getElementById("score");
-var gameScore = 0;
-var correctLetter = false;
-var wordGuess = 10;
-var wordSelect = ["a", "b", "c", "d", "e"];
-
-
-
-
-var gameStart = function() {
-gameTitle.textContent = "Liam's Famous Words";
-gameInstructions.textContent = "Let's do this! Press the computer buttons";
-gameWord.textContent = "Hey, Man!";
-gameBoard.textContent = "Total Score: " + gameScore + " out of " + wordSelect.length;
-}
-//var gameAction = function() {
-    //for (var i = 0; i < wordSelect.length; i++) {
-//        if (userGuess === wordSelect[i] && wordGuess > 0) {
-//            gameWord.textContent = userGuess + " You got it!";
-
-
-//        }
-//        else if (wordGuess === 0) {
-//            gameWord.textContent = "Try Again";
-//        }
-//        else {
-  //          wordGuess--;
-    //        gameWord.textContent = wordGuess + " nope";
-      //  }
-  //  }
-//}
-
-gameStart();
-
-    document.onkeyup = function(event) {
-    var userGuess = event.key;
-    console.log(userGuess);
-    gameWord.textContent = "Guesses " + wordGuess;
-
-    for (var i = 0; i < wordSelect.length; i++) {
-        gameInstructions.textContent = "Push a computer button to guess a letter";
-        if (userGuess === wordSelect[i] && wordGuess > 0) {
-            gameWord.textContent = userGuess + " You got it!";
-        }
-        else if (wordGuess > 0) {
-            wordGuess--;
-            gameWord.textContent = wordGuess + " nope";
-        }
-        else {
-            gameWord.textContent = "Try Again";
-        }
-    }
-    
-    
-}
-
-
-</script>
-
+  <div class="header" style="height:50px;"></div>
+  <div class="container border border-white mb-4" style="padding: 5%;">
+    <div class="row m-5">
+      <!-- <div class="col-2"></div> -->
+      <div id="title" class="col">LIAM'S FAMOUS WORDS</div>
+        <!-- <div class="col-2"></div> -->
+    </div>
+  </div>
+  <div class="container border border-white" style="padding: 5%;">
+    <div class="row m-5">
+      <div class="col">
+        <p id="instructions">Let's Do It!</p>
+        <p id="directions"></p>
+      </div>
+    </div>
+    <div class="row m-5">
+      <div class="col">
+        <h5>Letters to be guessed:</h5>
+        <p id="word"></p>
+        <p id="guesses"></p>
+        <p id="wrong"></p>
+      </div>
+    </div>
+    <div class="row m-5">
+      <div class="col">
+        <h5>Score Board</h5>
+        <p id="wins"></p>
+        <p id="losses"></p>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/index.js"></script>
 </body>
 </html>
