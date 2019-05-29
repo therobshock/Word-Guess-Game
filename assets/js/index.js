@@ -1,5 +1,13 @@
-
-var wordChoices = ["sun", "moon", "tyr", "woden", "thor", "frigge", "saturn"];
+var wordChoices = [
+  "mommy", 
+  "daddy", 
+  "car-games", 
+  "smoke-detector", 
+  "exhaust-pipe", 
+  "phone-jack", 
+  "kerchew", 
+  "lightning-mcqueen"
+];
 var index = 0;
 var wordPick = "";
 var wordLetters = [];
@@ -12,6 +20,7 @@ var losses = 0;
 var guesses = 9;
 
 var instructDisplay = document.getElementById("instructions");
+var directionsDisplay = document.getElementById("directions");
 var wordDisplay = document.getElementById("word");
 var guessesDisplay = document.getElementById("guesses");
 var wrongLettersDisplay = document.getElementById("wrong");
@@ -23,16 +32,17 @@ function wordSelector() {
       var word = wordChoices[index];
       index++;
       return word;
-    } else {
-      var word = "";
-      index = 0;
-      return word;
-    }
+    } 
 }
 
 function gameStart() {
   guesses = 9;
-  wordPick = wordSelector();
+
+  if (index < wordChoices.length) {
+    wordPick = wordSelector();
+  } else {
+    return gameOver();
+  }
   wordLetters = wordPick.split("");
   numBlanks = wordLetters.length;
 
@@ -42,7 +52,12 @@ function gameStart() {
   wrongGuesses = [];
 
   for (var i = 0; i < numBlanks; i++) {
-    blanksOrLetters.push("_");
+    if (wordPick[i] === "-") {
+      blanksOrLetters.push("-");
+    }
+    else {
+      blanksOrLetters.push("_");
+    }
   }
 
   console.log(blanksOrLetters);
@@ -50,6 +65,8 @@ function gameStart() {
   guessesDisplay.innerHTML = guesses;
   wordDisplay.innerHTML = blanksOrLetters.join(" ");
   wrongLettersDisplay.innerHTML = wrongGuesses.join(" ");
+
+  gamePlay();
 }
 
 function letterGuess(letter) {
@@ -87,24 +104,56 @@ function endRound() {
   if (wordLetters.toString() === blanksOrLetters.toString()) {
     wins++;
     instructDisplay.innerHTML = "You Win!";
+    wordDisplay.innerHTML = blanksOrLetters.join(" ");
     winsDisplay.innerHTML = "Wins: " + wins;
-    gameStart();
+    keyToContinue();
   }
   else if (guesses === 0) {
     losses++;
     instructDisplay.innerHTML = "Try Again";
-    lossesDisplay.innerHTML = "Losses" + losses;
+    lossesDisplay.innerHTML = "Losses: " + losses;
+    keyToContinue();
+  }
+ 
+};
+
+function gamePlay() {
+  instructDisplay.innerHTML = "Guess the word!";
+  directionsDisplay.innerHTML = "Type a key to guess letter";
+  
+  document.onkeyup = function(event) {
+    
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+      var userGuess = event.key.toLowerCase();
+      letterGuess(userGuess);
+      endRound();
+    }
+  };
+};
+
+function keyToContinue() {
+  directionsDisplay.innerHTML = "Press any key to continue...";
+  document.onkeyup = function(event) {
     gameStart();
   }
 };
 
-gameStart();
-
-document.onkeyup = function(event) {
-  
-  if (event.keyCode >= 65 && event.keyCode <= 90) {
-    var userGuess = event.key.toLowerCase();
-    letterGuess(userGuess);
-    endRound();
+function gameOver() {
+  instructDisplay.innerHTML = "Game Over!";
+  directionsDisplay.innerHTML = "Try again? Press Y or N";
+  document.onkeyup = function(event) {
+    userKey = event.key.toLowerCase();
+    if (userKey === "y") {
+      wins = 0;
+      losses = 0;
+      index = 0;
+      instructDisplay.innerHTML = "Let's Do It!";
+      keyToContinue();
+    }
+    else if (userKey === "n") {
+      directionsDisplay.innerHTML = "Thanks for playing!";
+    }
   }
 };
+
+keyToContinue();
