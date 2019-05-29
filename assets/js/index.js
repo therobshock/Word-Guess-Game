@@ -65,6 +65,8 @@ function gameStart() {
   guessesDisplay.innerHTML = guesses;
   wordDisplay.innerHTML = blanksOrLetters.join(" ");
   wrongLettersDisplay.innerHTML = wrongGuesses.join(" ");
+  winsDisplay.innerHTML = "Wins: " + wins;
+  lossesDisplay.innerHTML = "Losses: " + losses;
 
   gamePlay();
 }
