@@ -27,6 +27,20 @@ var wrongLettersDisplay = document.getElementById("wrong");
 var winsDisplay = document.getElementById("wins");
 var lossesDisplay = document.getElementById("losses");
 
+function detectmob() {
+  if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+var isMobile = detectmob();
+
+if (isMobile) {
+  alert("Sorry, without a physical keyboard you're gonna have a bad time...");
+}
+
 function wordSelector() {  
     if (index < wordChoices.length) {
       var word = wordChoices[index];
@@ -124,7 +138,7 @@ function gamePlay() {
   directionsDisplay.innerHTML = "Type a key to guess letter";
   
   document.onkeyup = function(event) {
-    
+        
     if (event.keyCode >= 65 && event.keyCode <= 90) {
       var userGuess = event.key.toLowerCase();
       letterGuess(userGuess);
@@ -135,6 +149,7 @@ function gamePlay() {
 
 function keyToContinue() {
   directionsDisplay.innerHTML = "Press any key to continue...";
+  
   document.onkeyup = function(event) {
     gameStart();
   }
