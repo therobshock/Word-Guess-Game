@@ -135,7 +135,7 @@ function endRound() {
 
 function gamePlay() {
   instructDisplay.innerHTML = "Guess the word!";
-  directionsDisplay.innerHTML = "Type a key to guess letter";
+  directionsDisplay.innerHTML = "Press a computer button (key) to guess letter";
   
   document.onkeyup = function(event) {
         
@@ -148,7 +148,7 @@ function gamePlay() {
 };
 
 function keyToContinue() {
-  directionsDisplay.innerHTML = "Press any key to continue...";
+  directionsDisplay.innerHTML = "Press any computer button (key) to continue...";
   
   document.onkeyup = function(event) {
     gameStart();
